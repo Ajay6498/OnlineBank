@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration form</title>
+</head>
+
+<head>
+<title>Simple registration form</title>
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
+	rel="stylesheet">
+
+<style>
+</style>
+</head>
+<body>
+
+
+	<p th:text=${msg} />
+
+	<form th:action="@{save}" th:object="${create}" method="POST">
+		<h1>Create Account</h1>
+
+		<table>
+
+			<tr>
+				<td>Account No :</td>
+				<td><input type="text" th:field="*{anumber}"
+					placeholder="Accoun Number" /></td>
+
+			</tr>
+			<tr>
+				<td>Name :</td>
+				<td><input type="text" th:field="*{name}"
+					placeholder="Enter Name" /></td>
+
+
+			</tr>
+
+			<tr>
+				<td>Address :</td>
+				<td><input type="text" th:field="*{address}"
+					placeholder="Enter Address" /></td>
+
+			</tr>
+
+			<tr>
+				<td>User Name :</td>
+				<td><input type="text" th:field="*{username}"
+					placeholder="Enter UserName" /></td>
+
+			</tr>
+
+
+			<tr>
+				<td>Password:</td>
+				<td><input type="password" th:field="*{password}"
+					placeholder="Enter Password" /></td>
+
+
+			</tr>
+			<tr>
+
+				<td><input type="submit" value="Create" /></td>
+			</tr>
+		</table>
+
+
+	</form>
+	<form action="/userlogin" method="get">
+		<!-- Other form fields go here -->
+
+		<!-- Login button -->
+		<button type="submit">Login</button>
+	</form>
+
+	<br>
+	<div>
+		LogIn <a href="/userlogin">Click here</a>
+	</div>
+
+	<br>
+	<br>
+	<div>
+		Get All Accounts <a href="/accounts">Click here</a>
+	</div>
+
+	<div>
+		Search Account <a href="/getbyid">Click here</a>
+	</div>
+	<div>
+		User Services <a href="/user">Click here</a>
+	</div>
+
+	<div>
+		WellCome Page <a href="ramkrishna">Click here</a>
+	</div>
+
+
+</body>
+</html>

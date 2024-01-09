@@ -10,13 +10,21 @@ public class Account {
 	@Id
 	private Long anumber;
 	private String name;
+	private String username;
 	private String address;
-	private Double balance; 
+	private Double balance=00.00; 
+	
 	private String password;
 	//private List<Transactions> transactions;
 	
 	static {
 		System.out.println("Account Class");
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	
 	public Long getAnumber() {
@@ -55,12 +63,13 @@ public class Account {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Account(Long anumber, String name, String address, Double balance, String password) {
+	public Account(Long anumber, String name,String username, String address, Double balance, String password) {
 		super();
 		this.anumber = anumber;
 		this.name = name;
+		this.username=username;
 		this.address = address;
-		this.balance = balance;
+		this.balance = 00.00;
 		this.password = password;
 		 
 	}

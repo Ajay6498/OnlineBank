@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Simple LogIn form</title>
+
+</head>
+
+<body>
+
+	<p th:text=${msg} />
+	<p th:text=${usermsg} />
+
+	<form th:action="@{checklogin}" method="post">
+
+		<h1>Log In</h1>
+
+		<table>
+			<tr>
+				<td><label for="userName">User Name:</label></td>
+				<td><input type="text" id="username" name="username" required
+					placeholder="eg.abc@yes"></td>
+			</tr>
+
+			<tr>
+				<td><label for="password">Password:</label></td>
+				<td><input type="password" id="password" name="password"
+					required placeholder="password"></td>
+			</tr>
+
+			<tr>
+				<td></td>
+				<td><input type="submit" value="LogIn"></td>
+			</tr>
+
+
+		</table>
+		<br>
+		<div>
+			SignUp <a href="/create">Click here</a>
+		</div>
+
+		<br> <br>
+		 
+		<div>
+			Return to User Page <a href="/user">Click here</a>
+		</div>
+		<div>
+			Return to WellCome page <a href="/ramkrishna">Click here</a>
+		</div>
+
+
+	</form>
+
+</body>
+
+</html>
