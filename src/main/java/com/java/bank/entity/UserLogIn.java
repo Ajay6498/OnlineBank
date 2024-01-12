@@ -6,6 +6,10 @@ import jakarta.persistence.Id;
 @Entity
 public class UserLogIn {
 	
+	static {
+		System.out.println("User Login Class");
+	}
+	
 	@Id
 	private String username;
 	private String password;

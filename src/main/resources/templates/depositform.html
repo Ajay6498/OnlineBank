@@ -1,23 +1,25 @@
- 
-
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="ISO-8859-1">
-    <title>Deposit Form</title>
+<meta charset="ISO-8859-1">
+<title>Deposit form</title>
 </head>
+<body>
 <body>
     <h2>Deposit Form</h2>
 
     <form th:action="@{/deposit}" method="post" th:object="${deposit}">
         <!-- Your form fields go here -->
-        <label for="anumber">Account Number:</label>
-        <input type="text" id="anumber" th:field="*{anumber}" />
-
-        <label for="amount">Amount:</label>
-        <input type="text" id="amount" th:field="*{amount}" />
-
-        <button type="submit">Submit</button>
+       
+        
+        <input type="text" id="anumber" name="anumber" required placeholder="Enter Account Number">
+        <input type="text" id="amount" name="amount" required placeholder="Enter Amount">
+        
+        <button type="submit">Search</button>
+        
     </form>
+    
+    <a href="javascript:history.back()">Go Back</a>
+    
 </body>
 </html>

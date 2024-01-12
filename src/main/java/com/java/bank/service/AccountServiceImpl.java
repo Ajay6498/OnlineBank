@@ -42,8 +42,9 @@ public class AccountServiceImpl implements AccountService {
 //**************************************************************************************************
 
 	@Override
-	public Optional<Account> getByAccountNo(Long anumber) {
-		return repository.findById(anumber);
+	public Account getByAccountNo(Long anumber) {
+		//return repository.findById(anumber);
+		return repository.getById(anumber);
 	}
 
 //**************************************************************************************************
@@ -191,7 +192,15 @@ public class AccountServiceImpl implements AccountService {
 		return account.getBalance();
 	}
 
-//**************************************************************************************************
+	//**************************************************************************************************
+	
+	public void RemoveAccount(Long anumber) {
+	
+		repository.deleteById(anumber);
+; 
+	}
+	
+	//**************************************************************************************************
 
 //	@Override
 //	public List<Transactions> getTransactionsByAccountNo(Long anumber) {

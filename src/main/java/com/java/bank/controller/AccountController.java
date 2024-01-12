@@ -59,8 +59,8 @@ public class AccountController {
 	@PostMapping("/checklogin")
 	public String CheckLogIn(Model model,@RequestParam String username,@RequestParam String password) {
 		Account account = accountRepo.findByUserName(username);
-
-		if (account != null) {
+		
+		 if (account != null) {
 			if (account.getUsername().equals(username) && account.getPassword().equals(password)) {
 				String usermsg = "Hi " + account.getName() + "...!";
 		String balance="Your Current Balance :"+ account.getBalance();
@@ -78,32 +78,73 @@ public class AccountController {
 
 		return "userdashbord";
 	}
+	
+	
+	//****************************************************************************************
+	
+	@GetMapping("/adminlogin")
+	public String AdminLogIn(Model model) {
+		model.addAttribute("userlogin", new com.java.bank.entity.UserLogIn());
+		return "adminlogin";
+	}
+
+	@PostMapping("/checkadminlogin")
+	public String CheckAdminLogIn(Model model,@RequestParam String username,@RequestParam String password) {
+           String uname="admin@yes";
+           String pass="admin@123";
+		 
+			if (uname.equals(username) && pass.equals(password)) {
+				 
+ 				return "admin";
+			} else {
+
+				 
+				return "login";
+			}
+		 
+
+		 
+	}
+	
+	//****************************************************************************************
 
 	@GetMapping("/create")
 	public String CreateForm(Model model) {
 		model.addAttribute("create", new Account());
 		return "create";
 	}
-
+	
+ 
 	@PostMapping("/save")
 	public String createAccount(Model model, Account account, BindingResult result) {
 		asi.createAccount(account);
 		model.addAttribute("msg", "created");
 		return "msg";
 	}
+	
+	//****************************************************************************************
+
 
 	@GetMapping("/getbyid")
-	public String getIdForm(Model model) {
-		model.addAttribute("getbyid", new Account());
+	public String getIdForm() {
+		 
 		return "getbyaccount";
 	}
+	
+	
 
-	@GetMapping("/account/{anumber}")
-	public String Search(@PathVariable Long anumber, Model model, BindingResult bindingResult) {
-		Optional<Account> employee = asi.getByAccountNo(anumber);
-		model.addAttribute("account", employee);
-		return "showaccounts";
+	
+	@GetMapping("/account")
+	public String Search(@RequestParam Long anumber, Model model) {
+		
+		Account account = asi.getByAccountNo(anumber);
+		System.out.println(account);
+
+		model.addAttribute("account", account);
+		return "showaccount";
 	}
+	
+	//****************************************************************************************
 
 	@GetMapping("/accounts")
 	public String getAllAccounts(Model model) {
@@ -112,19 +153,17 @@ public class AccountController {
 		return "showaccounts";
 	}
 
-	// **********************
+	//****************************************************************************************
 
-	@GetMapping("/deposit/form")
-	public String depositForm(Model model) {
-		// Add any necessary data to the model
-		// For example, if you need to pass an empty Deposit object or other data
-		// you can add it to the model here
-		// model.addAttribute("deposit", new Account()); // Assuming Deposit is a form
-		// object
-
+ 
+	
+	@GetMapping("/dp")
+	public String depositForm() {
+		 
 		return "depositform";
 	}
-
+	
+ 
 	@PostMapping("/deposit")
 	public String deposit(@RequestParam Long anumber, @RequestParam double amount, Model model) {
 		String result = asi.deposit(anumber, amount);
@@ -136,7 +175,10 @@ public class AccountController {
 			return "depositError"; // View for failed deposit
 		}
 	}
+	
+	//****************************************************************************************
 
+   //This service is use in Bank and ATM only
 	@PostMapping("/withdraw")
 	public String withdraw(@RequestParam Long anumber, @RequestParam double amount) {
 		String result = asi.withdraw(anumber, amount);
@@ -148,19 +190,48 @@ public class AccountController {
 		}
 	}
 
+	//****************************************************************************************
+    
+	@GetMapping("/transferform")
+	public String TransferForm() {
+    	
+    	return "transferfrom";
+    }
+    
+    
 	@PostMapping("/transfer")
 	public String transferAmount(@RequestParam Long sourceAccountNo, @RequestParam Long targetAccountNo,
-			@RequestParam double amount) {
+			@RequestParam double amount,Model model) {
 
 		String result = asi.transfer(sourceAccountNo, targetAccountNo, amount);
-
-		// You can customize the response based on the result
-		if (result.contains("successful")) {
-			return result;
+         model.addAttribute("message", result);
+ 		if (result.contains("successful")) {
+			return "msg";
 		} else {
-			return result;
+			return "transferfrom";
 		}
 	}
+	
+	//****************************************************************************************
+    
+	@GetMapping("/removeform")
+	public String RemoveAccount() {
+    	
+    	
+    	return "removeuser";
+    }
+	
+	@GetMapping("/removed")
+	public String RemoveAccount(Model model,Long anumber) {
+		
+		asi.RemoveAccount(anumber);
+		model.addAttribute("remove", "Removed Success");
+		
+		return "msg";
+	}
+	
+	
+	//****************************************************************************************
 
 	@GetMapping("/balance/{anumber}")
 	public Double getBalance(@PathVariable Long anumber) {

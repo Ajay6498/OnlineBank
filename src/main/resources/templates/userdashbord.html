@@ -5,14 +5,28 @@
 <title>User Dashboard</title>
 </head>
 <body>
-<p th:text=${usermsg} />
-<br>
-<p th:text=${balance} />
+	<p th:text=${usermsg} />
+	<br>
+	<p th:text=${balance} />
 
-<div>Found Transfer <a href=" ">Click here</a></div> I am working on this service
-<div>Transaction History a<a href=""> Click here</a> </div>  am working on this service
-<div>Delete Account <a href="/delete">Click here</a></div>	am working on this service
-	 
-	 
+	
+	
+	<div>
+		 * Found Transfer <a href="/transferform">Click here</a>
+	</div>
+	<div>
+		* Deposit <a href="/dp">Click here</a>
+	</div>
+	<div>
+		* Delete Account <a href="/removeform">Click here</a>
+	</div>
+<br><br>
+	<div>
+		Log Out <a href="/userlogin">Click here</a>
+	</div>
+	
+	<a href="javascript:history.back()">Go Back</a>
+
+
 </body>
 </html>

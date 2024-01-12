@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Transfer Form</title>
+</head>
+<body>
+    <h2>Transfer Form</h2>
+    <p th:text=${message} />
+    <form th:action="@{/transfer}" method="post">
+        
+        
+        <label for="sourceAccountNo">Source Account Number:</label>
+        <input type="text" id="sourceAccountNo" name="sourceAccountNo" required placeholder="Source Account Number">
+        <br>
+        <label for="targetAccountNo">Target Account Number:</label>
+        <input type="text" id="targetAccountNo" name="targetAccountNo" required placeholder="Target Account Number">
+        <br>
+        <label for="amount">Amount:</label>
+        <input type="text" id="amount" name="amount" required placeholder="Enter Amount">
+        
+        <br>
+        <button type="submit">Transfer</button>
+        
+        <a href="javascript:history.back()">Go Back</a>
+        
+    </form>
+</body>
+</html>

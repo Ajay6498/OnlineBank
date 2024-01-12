@@ -73,6 +73,11 @@ public class Account {
 		this.password = password;
 		 
 	}
+	@Override
+	public String toString() {
+		return "Account [anumber=" + anumber + ", name=" + name + ", username=" + username + ", address=" + address
+				+ ", balance=" + balance + ", password=" + password + "]";
+	}
 	public Account() {
 		super();
 		// TODO Auto-generated constructor stub

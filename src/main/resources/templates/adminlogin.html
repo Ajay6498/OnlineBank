@@ -11,7 +11,7 @@
 	<p th:text=${msg} />
 	<p th:text=${usermsg} />
 
-	<form th:action="@{checklogin}" method="post">
+	<form th:action="@{checkadminlogin}" method="post">
 
 		<h1>Log In</h1>
 
@@ -36,20 +36,20 @@
 
 		</table>
 		<br>
-		<div>
-			SignUp <a href="/create">Click here</a>
-		</div>
+		 
 
 		<br> <br>
+		
+		<a href="javascript:history.back()">Go Back</a>
 		 
 		<div>
-			Return to User Page <a href="/user">Click here</a>
+			User Page.... <a href="/user">Click here</a>
 		</div>
 		<div>
-			Return to WellCome page <a href="/ramkrishna">Click here</a>
+			WellCome page <a href="/ramkrishna">Click here</a>
 		</div>
 
-      <a href="javascript:history.back()">Go Back</a>
+
 	</form>
 
 </body>
