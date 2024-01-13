@@ -3,10 +3,22 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Deposit form</title>
+<style>
+ body{
+        
+        background-color: aqua;
+        text-align: center;
+        
+    }
+</style>
 </head>
 <body>
+
 <body>
     <h2>Deposit Form</h2>
+    <p th:text="${msg"></p>
+        <p th:text="${depositResult}"></p>
+    
 
     <form th:action="@{/deposit}" method="post" th:object="${deposit}">
         <!-- Your form fields go here -->
@@ -15,7 +27,7 @@
         <input type="text" id="anumber" name="anumber" required placeholder="Enter Account Number">
         <input type="text" id="amount" name="amount" required placeholder="Enter Amount">
         
-        <button type="submit">Search</button>
+        <button type="submit">Deposit</button>
         
     </form>
     

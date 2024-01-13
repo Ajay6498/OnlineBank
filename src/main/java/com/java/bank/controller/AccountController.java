@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.java.bank.entity.Account;
+import com.java.bank.entity.Transactions;
 import com.java.bank.repo.AccountRepo;
 //import com.java.bank.entity.Transactions;
 import com.java.bank.service.AccountServiceImpl;
@@ -59,8 +60,12 @@ public class AccountController {
 	@PostMapping("/checklogin")
 	public String CheckLogIn(Model model,@RequestParam String username,@RequestParam String password) {
 		Account account = accountRepo.findByUserName(username);
-		
 		 if (account != null) {
+			 
+			 Long anumber=account.getAnumber();
+			 List<Transactions> transactions=asi.getTransactionsByAccountNo(anumber);
+			 model.addAttribute("transaction", transactions);
+			 
 			if (account.getUsername().equals(username) && account.getPassword().equals(password)) {
 				String usermsg = "Hi " + account.getName() + "...!";
 		String balance="Your Current Balance :"+ account.getBalance();
@@ -119,7 +124,7 @@ public class AccountController {
 	public String createAccount(Model model, Account account, BindingResult result) {
 		asi.createAccount(account);
 		model.addAttribute("msg", "created");
-		return "msg";
+		return "create";
 	}
 	
 	//****************************************************************************************
@@ -170,9 +175,11 @@ public class AccountController {
 		model.addAttribute("depositResult", result);
 
 		if (result.contains("successful")) {
-			return "depositSuccess"; // View for successful deposit
+			model.addAttribute("msg", "Deposite Success");
+			return "depositform"; // View for successful deposit
 		} else {
-			return "depositError"; // View for failed deposit
+			model.addAttribute("msg", "Deposit Error");
+			return "depositform"; // View for failed deposit
 		}
 	}
 	
@@ -237,11 +244,17 @@ public class AccountController {
 	public Double getBalance(@PathVariable Long anumber) {
 		return asi.getBalance(anumber);
 	}
+	
+	//****************************************************************************************
 
-//	@GetMapping("/transactions/{anumber}")
-//	public List<Transactions> getTransactionsByAccountNo(Long anumber){
-//		
-//		return asi.getTransactionsByAccountNo(anumber);
-//	}
+
+	@GetMapping("/transactions/{anumber}")
+	public String getTransactionsByAccountNo(Long anumber,Model model){
+		
+		List<Transactions> transactions=asi.getTransactionsByAccountNo(anumber);
+		model.addAttribute("transaction", transactions);
+		
+		return "transactions";
+	}
 
 }

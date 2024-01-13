@@ -3,9 +3,20 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>User Dashboard</title>
+<style>
+ body{
+        
+        background-color: aqua;
+         
+    }
+    p{
+           color: red;
+     }
+</style>
 </head>
 <body>
-	<p th:text=${usermsg} />
+
+ 	<h1><p th:text=${usermsg}/> </h1>
 	<br>
 	<p th:text=${balance} />
 
@@ -14,12 +25,49 @@
 	<div>
 		 * Found Transfer <a href="/transferform">Click here</a>
 	</div>
-	<div>
-		* Deposit <a href="/dp">Click here</a>
-	</div>
+	 
 	<div>
 		* Delete Account <a href="/removeform">Click here</a>
 	</div>
+	
+	
+	<form>
+
+   <p>Transaction Histry </p> 
+	<table border="1" style="width: 400px">
+	
+	
+
+		<tr>
+		 
+ 			<td>T Id</td>
+			<td>T Date</td>
+			<td>T Type </td>
+			<td>T Amount</td>
+			  
+			 
+
+
+		</tr>
+		    <tr th:each="transaction : ${transaction}">
+			<td th:text="${transaction.tid}"></td>
+			<td th:text="${transaction.date}"></td>
+			<td th:text="${transaction.type}"></td>
+			<td th:text="${transaction.amount}"></td>
+			 
+			
+			 
+
+		</tr>
+
+	</table>
+	 
+	 
+
+</form>
+	
+	
+	
 <br><br>
 	<div>
 		Log Out <a href="/userlogin">Click here</a>

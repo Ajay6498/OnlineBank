@@ -1,5 +1,6 @@
 package com.java.bank.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.java.bank.entity.Account;
+import com.java.bank.entity.Transactions;
 import com.java.bank.repo.AccountRepo;
 //import com.java.bank.repo.TransactionRepo;
+import com.java.bank.repo.TransactionRepo;
 
 import jakarta.transaction.Transactional;
 
@@ -21,9 +24,11 @@ public class AccountServiceImpl implements AccountService {
 
 	@Autowired
 	private AccountRepo repository;
+	
+	
 
-	// @Autowired
-	// private TransactionRepo transactionRepo;
+	 @Autowired
+	 private TransactionRepo transactionRepo;
 
 	@Override
 	public String createAccount(Account account) {
@@ -63,13 +68,13 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public String deposit(Long anumber, double amount) {
 
-//	    Transactions transaction = new Transactions();
-//	    LocalDate currentDate = LocalDate.now();
-//	    transaction.setAnumber(anumber);
-//	    transaction.setType("DEPOSIT");
-//	    transaction.setAmount(amount);
-//	    transaction.setDate(currentDate);
-//	    transactionRepo.save(transaction);
+	    Transactions transaction = new Transactions();
+	    LocalDate currentDate = LocalDate.now();
+	    transaction.setAnumber(anumber);
+	    transaction.setType("DEPOSIT");
+	    transaction.setAmount(amount);
+	    transaction.setDate(currentDate);
+	    transactionRepo.save(transaction);
 
 		// Retrieve the account from the database using its ID
 		Optional<Account> optionalAccount = repository.findById(anumber);
@@ -100,13 +105,15 @@ public class AccountServiceImpl implements AccountService {
 	public String withdraw(Long anumber, double amount) {
 		Optional<Account> optionalAccount = repository.findById(anumber);
 //	    
-//	    Transactions transaction = new Transactions();
-//	    LocalDate currentDate = LocalDate.now();
-//        transaction.setAnumber(anumber);
-//        transaction.setType("WITHDRAW");
-//        transaction.setAmount(amount);
-//        transaction.setDate(currentDate);
-//        transactionRepo.save(transaction);
+	    Transactions transaction = new Transactions();
+	    
+	    LocalDate currentDate = LocalDate.now();
+	    transaction.setAnumber(anumber);
+
+        transaction.setType("WITHDRAW");
+        transaction.setAmount(amount);
+        transaction.setDate(currentDate);
+        transactionRepo.save(transaction);
 
 		if (optionalAccount.isPresent()) {
 			Account account = optionalAccount.get();
@@ -142,13 +149,15 @@ public class AccountServiceImpl implements AccountService {
 		Optional<Account> optionalSourceAccount = repository.findById(sourceAccountNo);
 		Optional<Account> optionalTargetAccount = repository.findById(targetAccountNo);
 
-//	    Transactions transaction = new Transactions();
-//	    LocalDate currentDate = LocalDate.now();
-//        transaction.setAnumber(sourceAccountNo);
-//        transaction.setType("TRANSACTION");
-//        transaction.setAmount(amount);
-//        transaction.setDate(currentDate);
-//        transactionRepo.save(transaction);
+	    Transactions transaction = new Transactions();
+	    LocalDate currentDate = LocalDate.now();
+	    transaction.setAnumber(sourceAccountNo);
+
+        transaction.setType("TRANSFER");
+        transaction.setAmount(amount);
+        transaction.setDate(currentDate);
+        transactionRepo.save(transaction);
+        
 
 		if (optionalSourceAccount.isPresent() && optionalTargetAccount.isPresent()) {
 			Account sourceAccount = optionalSourceAccount.get();
@@ -202,14 +211,12 @@ public class AccountServiceImpl implements AccountService {
 	
 	//**************************************************************************************************
 
-//	@Override
-//	public List<Transactions> getTransactionsByAccountNo(Long anumber) {
-//		// TODO Auto-generated method stub
-//		Account account=repository.getById(anumber);
-//		
-//		List<Transactions> transactions=account.getTransactions();
-//		 
-//		return transactions ;
-//	}
+	@Override
+	public List<Transactions> getTransactionsByAccountNo(Long anumber) {
+		// TODO Auto-generated method stub
+ 		List<Transactions> transactions=transactionRepo.getTransactionsByAccountNo(anumber);
+ 	 
+		return  transactions;
+	}
 
 }
