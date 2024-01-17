@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form>
+        <h2>Transaction History</h2>
+        <table class="table" border="1">
+            <thead>
+            <tr>
+                <th>T Id</th>
+                <th>T Date</th>
+                <th>T Type</th>
+                <th>T Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="transaction : ${transaction}">
+                <td th:text="${transaction.tid}"></td>
+                <td th:text="${transaction.date}"></td>
+                <td th:text="${transaction.type}"></td>
+                <td th:text="${transaction.amount}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <div>
+        <p> <a class="btn btn-secondary" href="/userlogin">Log Out</a></p>
+    </div>
+
+    <a class="btn btn-light" href="javascript:history.back()">Go Back</a>
+</div>
+
+</body>
+</html>

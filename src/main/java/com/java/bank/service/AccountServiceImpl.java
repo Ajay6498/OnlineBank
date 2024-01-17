@@ -179,11 +179,13 @@ public class AccountServiceImpl implements AccountService {
 				repository.save(targetAccount);
 
 				// Return a success message or any relevant information
-				return "Transfer successful. New balance in source account: " + newSourceBalance
-						+ ". New balance in target account: " + newTargetBalance;
+				return "Transfer successful. "
+						+ "New balance in source account: " + newSourceBalance
+						+ "New balance in target account: " + newTargetBalance;
 			} else {
 				// Return an error message if the source account has insufficient balance
-				return "Insufficient balance in source account for transfer. Current balance: " + sourceBalance;
+				return "Insufficient balance in source account for transfer. "
+						+ "Current balance: " + sourceBalance;
 			}
 		} else {
 			// Handle the case where either the source or target account is not found
@@ -217,6 +219,10 @@ public class AccountServiceImpl implements AccountService {
  		List<Transactions> transactions=transactionRepo.getTransactionsByAccountNo(anumber);
  	 
 		return  transactions;
+	}
+	
+	public List<Transactions> getAllTransaction(){
+		return transactionRepo.findAll();
 	}
 
 }

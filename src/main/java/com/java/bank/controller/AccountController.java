@@ -124,7 +124,7 @@ public class AccountController {
 	public String createAccount(Model model, Account account, BindingResult result) {
 		asi.createAccount(account);
 		model.addAttribute("msg", "created");
-		return "create";
+ 		return "msg";
 	}
 	
 	//****************************************************************************************
@@ -212,8 +212,9 @@ public class AccountController {
 
 		String result = asi.transfer(sourceAccountNo, targetAccountNo, amount);
          model.addAttribute("message", result);
+         
  		if (result.contains("successful")) {
-			return "msg";
+			return "transferfrom";
 		} else {
 			return "transferfrom";
 		}
@@ -256,5 +257,16 @@ public class AccountController {
 		
 		return "transactions";
 	}
+	
+	@GetMapping("/transactionss")
+	public String getAllTransactions(Model model){
+		
+		List<Transactions> transactions=asi.getAllTransaction();
+		model.addAttribute("transaction", transactions);
+		
+		return "transaction";
+	}
+	
+	
 
 }

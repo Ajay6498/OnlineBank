@@ -3,34 +3,97 @@
 <head>
     <title>Transfer Form</title>
     <style>
- body{
-        
-        background-color: aqua;
-        text-align: center;
-        
-    }
-</style>
+        body {
+            background: url('/Welcome.jpg') no-repeat center center fixed;
+            background-size: cover;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            padding: 20px;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h2 {
+            color: #e21593;
+            margin-bottom: 20px;
+            font-size: 40px;
+        }
+
+        form {
+            max-width: 400px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            color: #841af5;
+            text-decoration: none;
+            display: block;
+            margin-top: 10px;
+        }
+        p{
+        color: green;
+        }
+    </style>
 </head>
 <body>
-    <h2>Transfer Form</h2>
-    <p th:text=${message} />
+    
     <form th:action="@{/transfer}" method="post">
         
-        
+        <h2>Transfer Form</h2>
+        <p th:text=${message}></p>
+
         <label for="sourceAccountNo">Source Account Number:</label>
         <input type="text" id="sourceAccountNo" name="sourceAccountNo" required placeholder="Source Account Number">
-        <br>
+        
         <label for="targetAccountNo">Target Account Number:</label>
         <input type="text" id="targetAccountNo" name="targetAccountNo" required placeholder="Target Account Number">
-        <br>
+        
         <label for="amount">Amount:</label>
         <input type="text" id="amount" name="amount" required placeholder="Enter Amount">
         
-        <br>
         <button type="submit">Transfer</button>
         
         <a href="javascript:history.back()">Go Back</a>
-        
+
+        <br>
     </form>
 </body>
 </html>

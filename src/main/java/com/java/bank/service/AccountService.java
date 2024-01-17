@@ -20,3 +20,4 @@ public interface AccountService {
  	public List<Transactions> getTransactionsByAccountNo(Long anumber);
  	
 }
+  

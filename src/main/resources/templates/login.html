@@ -1,18 +1,113 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>User LogIn form</title>
-
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyFW73YoQ8SaqBKEFNFzgZq4V0U7fDgPx"
+	crossorigin="anonymous">
 <style>
- body{
-        
-        background-color: aqua;
-         
-        
-    }
-</style>
+body {
+	background: url('/Welcome.jpg') no-repeat center center fixed;
+	background-size: cover;
+	text-align: center;
+	color: #fff;
+	font-family: 'Roboto', sans-serif;
+	height: 100vh;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
 
+form {
+	max-width: 400px;
+	width: 100%;
+	background: rgba(255, 255, 255, 0.8);
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+	color: #800080; /* Purple color for heading */
+	margin-bottom: 20px;
+}
+
+table {
+	width: 100%;
+}
+
+table td {
+	padding: 10px;
+	text-align: left;
+}
+
+label {
+	color: #800080; /* Purple color for labels */
+	font-weight: bold;
+	font-size: larger;
+	
+}
+
+input {
+	width: 100%;
+	padding: 8px;
+	box-sizing: border-box;
+	margin-bottom: 15px;
+	border: 1px solid #800080; /* Purple border for input fields */
+	border-radius: 5px;
+}
+
+input[type="submit"] {
+	background-color: #800080; /* Purple color for submit button */
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	padding: 10px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+	background-color: #6a007f; /* Darker shade on hover */
+}
+
+a {
+	color:white ;  
+	text-decoration: none;
+	margin-top: 20px;
+	display: block;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.links-container {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+}
+
+.links-container a {
+	flex: 1;
+    margin: 0 10px;
+    background-color: purple;
+    border-radius: 5px;
+    font-size: 10px;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+</style>
 </head>
 
 <body>
@@ -21,8 +116,7 @@
 	<p th:text=${usermsg} />
 
 	<form th:action="@{checklogin}" method="post">
-
-		<h1> User Log In</h1>
+		<h1>User Log In</h1>
 
 		<table>
 			<tr>
@@ -38,29 +132,32 @@
 			</tr>
 
 			<tr>
-				<td></td>
-				<td><input type="submit" value="LogIn"></td>
+				<td colspan="2"><input type="submit" value="LogIn"></td>
 			</tr>
-
-
 		</table>
-		<br>
-		<div>
-			SignUp <a href="/create">Click here</a>
+
+		<div class="links-container">
+			
+ 		<a href="/create">SignUp</a><a href="/user">User Page</a> <a href="/ramkrishna">WellCome page</a>
+			
+					<a href="javascript:history.back()">Go Back</a>
+			
 		</div>
 
-		<br> <br>
-		 
-		<div>
-			Return to User Page <a href="/user">Click here</a>
-		</div>
-		<div>
-			Return to WellCome page <a href="/ramkrishna">Click here</a>
-		</div>
-
-      <a href="javascript:history.back()">Go Back</a>
 	</form>
 
+	<!-- Bootstrap JS and dependencies -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"
+		integrity="sha384-Rq6ZF8TzYCUwPrbJ0idqYcpPj6toZ3SVwtnXs73PdIzSTqOeLDOJ6Gw9pArTSAER"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyFW73YoQ8SaqBKEFNFzgZq4V0U7fDgPx"
+		crossorigin="anonymous"></script>
 </body>
 
 </html>

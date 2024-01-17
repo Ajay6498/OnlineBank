@@ -1,57 +1,115 @@
 <!DOCTYPE html>
-<html lang="Eng">
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
-<title>Admin Page</title>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('/Welcome.jpg') no-repeat center center fixed;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
 
-<style>
- body{
-        
-        background-color: aqua;
-        text-align: center;
-        
-    }
-</style>
+        h2 {
+            color: #09df1f;
+             text-align: center;
+             
+        }
+
+        div {
+            margin: 20px 0;
+             
+            
+
+            
+        }
+
+        a {
+            text-decoration: none;
+            color: #ed7905;
+            padding: 8px 16px;
+            border: 1px solid #0a0a0a;
+            border-radius: 4px;
+            margin-right: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        a:hover {
+            background-color: #007BFF;
+            color: #fff;
+        }
+
+        a.back-btn {
+            margin-top: 20px;
+        }
+
+        .separator {
+            margin: 20px 0;
+            border-top: 1px solid #333;
+            width: 100%;
+        }
+        .form{
+            
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            width:auto;
+            
+            
+        }
+    </style>
 </head>
 <body>
+    <form class="form" action=""><h2>Welcome To Admin Page...!!!</h2>
 
-	<h2>Well Come To Admin Page...!!!</h2>
-	<br>
-
-	<div>
-		* Create Account <a href="/create">Click here</a>
-	</div>
-	<div>
-		* Search Account <a href="/getbyid">Click here</a>
-	</div>
-	<div>
-		 * Get All Account <a href="/accounts">Click here</a>
-	</div>
-	
-	<div>
-		* Remove Account <a href="/removeform">Click here</a>
-	</div>
-	<div>
-		 * Found Transfer <a href="/transferform">Click here</a>
-	</div>
-	<div>
-		* Deposit <a href="/dp">Click here</a>
-	</div>
-	-----------------------------------------------------------------------------------------
-	<div>
-		* Withdraw <a href=" ">Click here</a> (This service use only in bank)
-	</div>
-	
-	<div>
-		* Update Account <a href=" ">Click here</a>
-	</div>
-	<div>
-		<br> <br> <br> LogOut <a href=/adminlogin>Click
-			here</a>
-	</div>
-	
-	<a href="javascript:history.back()">Go Back</a>
-
-
-</body>
+        <div>
+            <a href="/create">Create Account</a>
+        </div>
+        <div>
+            <a href="/getbyid">Search Account</a>
+        </div>
+        <div>
+            <a href="/accounts">Get All Account</a>
+        </div>
+    
+        <div>
+            <a href="/removeform">Remove Account</a>
+        </div>
+        <div>
+            <a href="/transferform">Fund Transfer</a>
+        </div>
+        <div>
+            <a href="/dp">Deposit</a>
+            
+        </div>
+        <div>
+            <a href="/transactionss">Transactions</a>
+            
+        </div>
+        
+    
+        <div class="separator"></div>
+    
+        <div>
+            <a href="#">Withdraw (Bank use only)</a>
+        </div>
+        <div>
+            <a href="#">Update Account</a>
+        </div>
+    
+        <div class="separator"></div>
+    
+        <div>
+            <a href="/adminlogin">Log Out</a>
+        </div>
+    <div>        <a href="javascript:history.back()" class="back-btn">Go Back</a>
+    </div>
+    </form>
+    </body>
 </html>
